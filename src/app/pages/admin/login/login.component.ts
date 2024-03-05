@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   loginObj: any = {
-    userName:'',
-    password:''
+    userName: '',
+    password: ''
   }
 
   constructor(private router: Router) {
@@ -23,10 +23,10 @@ export class LoginComponent {
  
   onLogin() {
     if (this.loginObj.userName == "admin" && this.loginObj.password == "12345") {
-        this.router.navigateByUrl('/');  
+        this.router.navigateByUrl('/products');  
     }
     else{
-
+      alert('wrong credentials');
     }
   }
 }
