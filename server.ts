@@ -23,7 +23,7 @@ export function app(): express.Express {
   server.get('*.*', express.static(browserDistFolder, {
     maxAge: '1y'
   }));
-
+debugger;
   // All regular routes use the Angular engine
   server.get('*', (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
@@ -52,5 +52,5 @@ function run(): void {
     console.log(`Node Express server listening on http://localhost:${port}`);
   });
 }
-
+console.log("ddddddddddddddddddddd");
 run();
