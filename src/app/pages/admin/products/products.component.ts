@@ -15,16 +15,16 @@ export class ProductsComponent implements OnInit{
   isSidePanelVisible: boolean = false;
 
   productObj: any = {
-    "ProductId": 0,
-    "ProductSku": "",
-    "ProductName": "",
-    "ProductPrice": 0,
-    "ProductShortName": "",
-    "ProductDescription": "",
-    "CreatedDate": new Date(),
-    "DeliveryTimeSpan": "",
-    "CategoryId": 0,
-    "ProductImageUrl": ""
+    "productId": 0,
+    "productSku": "",
+    "productName": "",
+    "productPrice": 0,
+    "productShortName": "",
+    "productDescription": "",
+    "createdDate": new Date(),
+    "deliveryTimeSpan": "",
+    "categoryId": 0,
+    "productImageUrl": ""
   }
 
   categoryList: any [] = [];
@@ -35,8 +35,8 @@ export class ProductsComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.getAllCategory();
     this.getProducts();
+    this.getAllCategory();
   }
 
   getProducts(){
@@ -51,9 +51,19 @@ export class ProductsComponent implements OnInit{
     })
   }
   
+  onUpdate(){
+    this.productService.updateProduct(this.productObj).subscribe((res: any) => {
+      if (res.result) {
+        alert("Product Updated....");
+        this.getProducts()
+      }else{
+        alert(res.message)
+      }
+    })
+  }
+
   onSave(){
     this.productService.saveProduct(this.productObj).subscribe((res: any) => {
-      debugger;
       if (res.result) {
         alert("PRoduct Created....");
         this.getProducts()
@@ -61,6 +71,21 @@ export class ProductsComponent implements OnInit{
         alert(res.message)
       }
     })
+  }
+
+  onDelete(item: any){
+    const isDeleted = confirm('Are you sure want to delete');
+    if (isDeleted) {
+      this.productService.deleteProduct(item.productId).subscribe((res: any) => {
+        debugger;
+        if (res.result) {
+          alert("Product deleted");
+          this.getProducts();
+        }else{
+          alert(res.message);
+        }
+      })
+    }
   }
 
   onEdit(item: any){

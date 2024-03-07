@@ -10,8 +10,8 @@ export class ProductService {
 
   constructor(private http: HttpClient) { }
 
-  getCategory() {
-    return this.http.get(Constant.API_END_POINT + Constant.METHODS.GET_ALL_CATEGORY)
+  getCategory(): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_ALL_CATEGORY);
   }
 
   saveProduct(obj: any): Observable<any> {
@@ -21,4 +21,15 @@ export class ProductService {
   getProducts(): Observable<any[]> {
     return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT);
   }
+
+  updateProduct(obj: any): Observable<any> {
+    return this.http.post<any>(Constant.API_END_POINT + Constant.METHODS.UPDATE_PRODUCT, obj);
+
+  }
+
+  deleteProduct(id: any): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.DELETE_PRODUCT + id);
+  }
+
+
 }
