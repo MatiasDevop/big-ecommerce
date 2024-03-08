@@ -1,29 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { FooterComponent } from '../footer/footer.component';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
-import { FormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'app-web-products',
   standalone: true,
-  imports: [RouterOutlet ,FooterComponent, FormsModule, CommonModule, RouterLink],
-  templateUrl: './landing.component.html',
-  styleUrl: './landing.component.css'
+  imports: [CommonModule, RouterLink],
+  templateUrl: './web-products.component.html',
+  styleUrl: './web-products.component.css'
 })
-export class LandingComponent implements OnInit {
-
+export class WebProductsComponent {
 
   productList: any[] = [];
   categoryList: any[] = [];
-  cartList: any[] = [];
-  loggedInObj: any = {};
-
 
   constructor(private productService: ProductService,
     private router: Router){
-
+      
   }
 
   ngOnInit(): void {
@@ -42,7 +36,6 @@ export class LandingComponent implements OnInit {
       this.categoryList = res.data.filter((list: any) => list.parentCategoryId === 0);
     });
   }
-
   navigateToProducts(id: number){
     this.router.navigate(['/products', id]);
   }

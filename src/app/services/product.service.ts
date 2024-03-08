@@ -31,5 +31,8 @@ export class ProductService {
     return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.DELETE_PRODUCT + id);
   }
 
+  getProductsByCategory(id: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT_BY_CATEGORY + id);
+  }
 
 }
