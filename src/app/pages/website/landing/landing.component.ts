@@ -29,6 +29,17 @@ export class LandingComponent implements OnInit {
   ngOnInit(): void {
     this.getAllProducts();
     this.getAllCategory();
+    this.getCartByCustomer();
+  }
+  
+  navigateToProducts(id: number){
+    this.router.navigate(['/products', id]);
+  }
+
+  getCartByCustomer(){
+    this.productService.getCartDataByCustId(705).subscribe((res: any) => {
+      this.cartList = res.data;
+    })
   }
 
   getAllProducts(){
@@ -43,7 +54,5 @@ export class LandingComponent implements OnInit {
     });
   }
 
-  navigateToProducts(id: number){
-    this.router.navigate(['/products', id]);
-  }
+  
 }

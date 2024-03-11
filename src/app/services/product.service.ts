@@ -35,4 +35,12 @@ export class ProductService {
     return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_ALL_PRODUCT_BY_CATEGORY + id);
   }
 
+  addToCart(obj: any): Observable<any> {
+    return this.http.post<any>(Constant.API_END_POINT + Constant.METHODS.ADD_TO_CART, obj);
+  }
+  
+  getCartDataByCustId(custId: number): Observable<any[]> {
+    return this.http.get<any[]>(Constant.API_END_POINT + Constant.METHODS.GET_CART_BY_CUST + custId);
+  }
+
 }

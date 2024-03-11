@@ -25,6 +25,23 @@ export class WebProductsComponent {
     this.getAllCategory();
   }
 
+  addToCart(productId: number){
+      const addTocartObj = {
+        "CartId": 0,
+        "CustId": 705,
+        "ProductId": productId,
+        "Quantity": 1,
+        "AddedDate": new Date()
+      }
+      this.productService.addToCart(addTocartObj).subscribe((res: any) =>{
+        if (res.result) {
+          alert("Product added to cart")
+        }
+        else{
+          alert(res.message)
+        }
+      })
+  }
   getAllProducts(){
     this.productService.getProducts().subscribe((res: any) =>{
       this.productList = res.data;

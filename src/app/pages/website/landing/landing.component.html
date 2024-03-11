@@ -49,8 +49,8 @@
             <li class="nav-item">
               <a class="nav-link"><i class="fa-solid fa-magnifying-glass fs-5" style="color: #0c0d0d;"></i></a>
             </li>
-            <!-- cart -->
-            <ng-container *ngIf="loggedInObj?.custId">
+            <!-- cart --> 
+            <ng-container>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown3" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false">
@@ -74,8 +74,7 @@
                                 <p class="m-0 p-0">{{cart.productShortName}}</p>
                               </a>
                               <p>{{cart.quantity}} <i class="fa-solid fa-xmark" style="color: #0d0d0d;"></i>
-                                {{cart.productPrice
-                               }}</p>
+                                {{cart.productPrice}}</p>
                             </div>
                           </div>
                           <div class="col-md-2">
