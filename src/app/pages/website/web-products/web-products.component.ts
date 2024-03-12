@@ -35,7 +35,8 @@ export class WebProductsComponent {
       }
       this.productService.addToCart(addTocartObj).subscribe((res: any) =>{
         if (res.result) {
-          alert("Product added to cart")
+          alert("Product added to cart");
+          this.productService.cartUpdated$?.next(true);
         }
         else{
           alert(res.message)

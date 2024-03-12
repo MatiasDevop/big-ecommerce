@@ -23,6 +23,9 @@ export class LandingComponent implements OnInit {
 
   constructor(private productService: ProductService,
     private router: Router){
+      this.productService.cartUpdated$?.subscribe((res: any) =>{
+        this.getCartByCustomer();
+      })
 
   }
 
@@ -47,6 +50,7 @@ export class LandingComponent implements OnInit {
       this.productList = res.data;
     })
   }
+
   getAllCategory() {
     this.productService.getCategory().subscribe((res: any) => {
       // Get top-level categories (parentCategoryId = 0)
