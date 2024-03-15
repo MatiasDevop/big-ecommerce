@@ -39,6 +39,16 @@ export class LandingComponent implements OnInit {
     this.router.navigate(['/products', id]);
   }
 
+  removeProduct(cardId: number){
+      this.productService.removeProductByCartId(cardId).subscribe((res: any) =>{
+        if (res.result) {
+          this.getCartByCustomer();
+        }else{
+          alert(res.message)
+        }
+      })
+  }
+
   getCartByCustomer(){
     this.productService.getCartDataByCustId(705).subscribe((res: any) => {
       this.cartList = res.data;
@@ -50,6 +60,7 @@ export class LandingComponent implements OnInit {
       this.productList = res.data;
     })
   }
+
 
   getAllCategory() {
     this.productService.getCategory().subscribe((res: any) => {

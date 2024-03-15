@@ -53,7 +53,7 @@
             <!-- <ng-container> -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown3" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                  aria-expanded="true">
                   <i class="fa fa-cart-shopping fs-5 me-1" style="color: #202122;"></i>
                   <span class="position-absolute translate-middle badge rounded-pill bg-danger"
                     *ngIf="cartList.length !== 0">
@@ -78,7 +78,7 @@
                             </div>
                           </div>
                           <div class="col-md-2">
-                            <button class="btn closeBtn float-end" style="height: auto;"><i
+                            <button class="btn closeBtn float-end" (click)="removeProduct(cart.cartId)" style="height: auto;"><i
                                 class="fa fa-xmark"></i></button>
                           </div>
                         </div>
