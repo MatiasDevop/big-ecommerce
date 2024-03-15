@@ -44,6 +44,8 @@ export class WebProductsComponent {
       })
   }
   getAllProducts(){
+    //unreliable method;
+    //({} as any).someMethod();
     this.productService.getProducts().subscribe((res: any) =>{
       this.productList = res.data;
     })

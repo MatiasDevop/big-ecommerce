@@ -53,15 +53,15 @@
             <!-- <ng-container> -->
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown3" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="true">
+                  aria-expanded="false">
                   <i class="fa fa-cart-shopping fs-5 me-1" style="color: #202122;"></i>
                   <span class="position-absolute translate-middle badge rounded-pill bg-danger"
                     *ngIf="cartList.length !== 0">
-                    <!-- {{cartList.length}} -->
+                    {{cartList.length}}
                   </span>
                 </a>
                 <!-- <ng-container *ngIf="cartList.length !== 0"> -->
-                  <ul class="dropdown-menu menuOnLeft rounded-0 mt-2" aria-labelledby="">
+                  <ul class="dropdown-menu menuOnLeft rounded-0 mt-0" aria-labelledby="">
                     <li class="p-2" *ngFor="let cart of cartList">
                       <div>
                         <div class="row">
