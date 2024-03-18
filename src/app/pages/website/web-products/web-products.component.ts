@@ -2,11 +2,15 @@ import { Component } from '@angular/core';
 import { ProductService } from '../../../services/product.service';
 import { Router, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import {MatFormFieldModule} from '@angular/material/form-field'
+import {MatInputModule} from '@angular/material/input';
+import { WidgetErrorComponent } from '../../../shared/widget/widget-error/widget-error.component';
+
 
 @Component({
   selector: 'app-web-products',
   standalone: true,
-  imports: [CommonModule, RouterLink],
+  imports: [CommonModule, RouterLink, MatFormFieldModule, MatInputModule, WidgetErrorComponent],
   templateUrl: './web-products.component.html',
   styleUrl: './web-products.component.css'
 })
@@ -14,6 +18,7 @@ export class WebProductsComponent {
 
   productList: any[] = [];
   categoryList: any[] = [];
+  error: Error | null = null;
 
   constructor(private productService: ProductService,
     private router: Router){
