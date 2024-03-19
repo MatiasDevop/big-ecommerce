@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {MatInputModule} from '@angular/material/input';
 import { WidgetErrorComponent } from '../../../shared/widget/widget-error/widget-error.component';
+import { Observable, map } from 'rxjs';
 
 
 @Component({
@@ -15,6 +16,8 @@ import { WidgetErrorComponent } from '../../../shared/widget/widget-error/widget
   styleUrl: './web-products.component.css'
 })
 export class WebProductsComponent {
+
+  products$!: Observable<any[]>;
 
   productList: any[] = [];
   categoryList: any[] = [];
@@ -51,9 +54,15 @@ export class WebProductsComponent {
   getAllProducts(){
     //unreliable method;
     //({} as any).someMethod();
-    this.productService.getProducts().subscribe((res: any) =>{
-      this.productList = res.data;
-    })
+    
+    // this.products$ = this.productService.getProducts().pipe(
+    //   map(res => {
+    //     console.log(res[0].data)
+    //     this.productList = res[0].data;
+    //     return res.map(data => data.data);
+    //   })
+    // );
+    
   }
   getAllCategory() {
     this.productService.getCategory().subscribe((res: any) => {
