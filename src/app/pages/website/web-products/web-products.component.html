@@ -6,7 +6,7 @@
             looks reasonable.
           </p>
       </div>
-      <div class="row g-4" *ngIf="products$ | async as products">
+      <div class="row g-4">
         <div class="col-lg-6 col-xl-4" *ngFor="let product of productList">
             <div class="p-4 rounded bg-light">
                 <div class="row align-items-center">
@@ -33,6 +33,9 @@
       </div>
     </div>
 </div>
+@for (item of productList; track item.productId) {
+    <li>{{item.productShortName}}</li>
+}
 
 <app-widget-error *ngIf="error" class="error" [error]="error">
     <div class="title mat-title">Backlog Widget</div>

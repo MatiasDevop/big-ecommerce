@@ -54,7 +54,9 @@ export class WebProductsComponent {
   getAllProducts(){
     //unreliable method;
     //({} as any).someMethod();
-    
+    this.productService.getProducts().subscribe((res: any) =>{
+      this.productList = res.data;
+    })
     // this.products$ = this.productService.getProducts().pipe(
     //   map(res => {
     //     console.log(res[0].data)
