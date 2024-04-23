@@ -1,1 +1,11 @@
+<div class="content" role="main">
+    <h2>Register</h2>
+    <div>Name: <input [(ngModel)]="registerDto.name" /> </div>
+    <div>Email: <input [(ngModel)]="registerDto.email" /> </div>
+    <div>Password: <input [(ngModel)]="registerDto.password" /> </div>
+    <button (click)="register(registerDto)">
+        register
+    </button>
+</div>
+
 <router-outlet></router-outlet>
